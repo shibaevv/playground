@@ -4,15 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>au.com.totemsoft</groupId>
-    <artifactId>shoppingcart</artifactId>
+    <artifactId>chess</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
  
-    <name>Shopping Cart</name>
-    <description>Sydney focused booking engine</description>
+    <name>Chess</name>
+    <description>Chess</description>
 
     <properties>
-        <groovy.version>2.4.9</groovy.version>
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.13</junit.version>
 
@@ -22,11 +21,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
