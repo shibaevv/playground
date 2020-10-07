@@ -64,7 +64,7 @@ public class Scenario {
             //
             System.out.print("Enter colour (W/B): ");
             ColorEnum color = ColorEnum.valueOf(scanner.next().toUpperCase());
-            System.out.print("Enter type (B/N): ");
+            System.out.print("Enter type (R/B/N): ");
             TypeEnum type = TypeEnum.valueOf(scanner.next().toUpperCase());
             System.out.print("Enter position: ");
             String position = scanner.next().toLowerCase();
