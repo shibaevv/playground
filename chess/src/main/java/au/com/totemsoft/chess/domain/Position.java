@@ -1,8 +1,10 @@
 package au.com.totemsoft.chess.domain;
 
 import lombok.EqualsAndHashCode;
+import lombok.Generated;
 import lombok.Getter;
 
+@Generated
 @Getter
 @EqualsAndHashCode
 public class Position implements Comparable<Position> {

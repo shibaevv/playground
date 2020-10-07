@@ -8,8 +8,10 @@ import au.com.totemsoft.chess.domain.rule.PawnRule;
 import au.com.totemsoft.chess.domain.rule.QueenRule;
 import au.com.totemsoft.chess.domain.rule.RookRule;
 import lombok.AllArgsConstructor;
+import lombok.Generated;
 import lombok.Getter;
 
+@Generated
 @Getter
 @AllArgsConstructor
 public enum TypeEnum {
