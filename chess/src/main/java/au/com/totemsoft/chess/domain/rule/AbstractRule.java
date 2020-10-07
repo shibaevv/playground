@@ -1,6 +1,7 @@
 package au.com.totemsoft.chess.domain.rule;
 
 import java.util.List;
+import java.util.Set;
 
 import au.com.totemsoft.chess.domain.MoveTypeEnum;
 import au.com.totemsoft.chess.domain.Piece;
@@ -31,6 +32,18 @@ public abstract class AbstractRule implements Move {
         }
         //
         return MoveTypeEnum.MOVE;
+    }
+
+    protected boolean addContinue(Position move, Piece piece, List<Piece> pieces, Set<Position> moves) {
+        MoveTypeEnum moveType = moveType(move, piece, pieces); 
+        if (moveType == null) {
+            return false;
+        }
+        moves.add(move);
+        if (moveType == MoveTypeEnum.CAPTURE) {
+            return false;
+        }
+        return true;
     }
 
 }
