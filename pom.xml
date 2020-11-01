@@ -16,6 +16,8 @@
     <modules>
         <module>chess</module>
         <module>shopping-cart</module>
+        <module>utils</module>
+        <module>westpak</module>
     </modules>
 
     <properties>
