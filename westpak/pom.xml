@@ -4,8 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.westpac</groupId>
-    <artifactId>exercise</artifactId>
+    <artifactId>playground-exercise</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <name>Westpac</name>
+    <description>Westpac Exercise</description>
 
     <properties>
         <lombok.version>1.18.12</lombok.version>
