@@ -1,0 +1,55 @@
+/*
+ * Grid CSS: Standard Nesting Grid (1/2 - 1/2)
+ * Nested sub-division of spaces are created by the interplay of "(g)rids" and "(u)nits".
+ * The "(g)rid" is a parent container that tells its children how to behave.
+ * The standard Nesting Grid's parent container is div.ts-g, where "g" stands for "grid" or "grid holder".
+ * Within this holder are two units that take direction from their parent.
+ * They look like this: div.ts-u, where "u" stands for units.
+ * The units are identical except that we need to add a class to distinguish the first one from any others.
+ */
+
+.ts-g .ts-u .ts-g {
+  width: 100%;
+}
+
+/**
+ * Section: Grid and Nesting Grids
+ */
+
+/* Float units (and sub grids) to the right */
+.ts-g .ts-u,
+.ts-g .ts-g {
+  float: right;
+}
+
+/* Float units (and sub grids) to the left */
+.ts-g div.first {
+  float: left;
+}
+
+.ts-g .ts-u,
+.ts-g .ts-g {
+  width: 49%;
+}
+
+/** Section: Deep Nesting */
+.ts-g .ts-g .ts-u {
+  width: 49%;
+  *width: 48%;
+  *margin-left: 0;
+}
+
+.ts-g .ts-g .ts-u {
+  width: 48%;
+}
+
+/* @group Clearing */
+.ts-g:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.ts-g {
+  zoom: 1;
+}
