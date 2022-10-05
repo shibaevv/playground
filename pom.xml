@@ -14,6 +14,7 @@
     <url>https://github.com/shibaevv/playground</url>
 
     <modules>
+        <module>crm</module>
         <module>chess</module>
         <module>shopping-cart</module>
         <module>utils</module>
