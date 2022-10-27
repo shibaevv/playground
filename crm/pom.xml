@@ -19,6 +19,11 @@
     <description>NAB</description>
 
     <properties>
+        <docker.image.prefix>${env.REGISTRY_NAME}.azurecr.io</docker.image.prefix>
+
+        <jib-maven-plugin.version>3.0.0</jib-maven-plugin.version>
+        <jkube.version>1.9.1</jkube.version>
+
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +70,76 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <layers>
+                        <enabled>true</enabled>
+                    </layers>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                    <!--image>
+                        <name>${docker.image.prefix}/${project.artifactId}</name>
+                    </image-->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${jib-maven-plugin.version}</version>
+                <configuration>
+                    <from>
+                        <image>mcr.microsoft.com/java/jdk:${java.version}-zulu-alpine</image>
+                    </from>
+                    <to>
+                        <image>${docker.image.prefix}/${project.artifactId}</image>
+                        <auth>
+                          <username>${env.REGISTRY_USERNAME}</username>
+                          <password>${env.REGISTRY_PASSWORD}</password>
+                        </auth>
+                    </to>
+                    <container>
+                        <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                        <ports>
+                            <port>2222</port>
+                        </ports>
+                    </container>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>kubernetes</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.eclipse.jkube</groupId>
+                        <artifactId>kubernetes-maven-plugin</artifactId>
+                        <version>${jkube.version}</version>
+                        <configuration>
+                        <images>
+                            <image>
+                                <name>${project.artifactId}:${project.version}</name>
+                                <alias>${project.artifactId}</alias>
+                                <build>
+                                    <from>openjdk:latest</from>
+                                    <cmd>java -jar maven/${project.artifactId}-${project.version}.jar</cmd>
+                                </build>
+                                <run>
+                                    <wait>
+                                        <log>Hello World!</log>
+                                    </wait>
+                                </run>
+                            </image>
+                        </images>
+                       </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
